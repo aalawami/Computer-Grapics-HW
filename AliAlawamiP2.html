@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2022 by anonymous (http://jsbin.com/qofadaneqa/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<body>
+    <canvas id="myCanvas" width="4000" height="300"></canvas>
+	<br/>
+	<input id="slider1" type="range" min="-100" max="100" />
+	<br/>
+	<input id="slider2" type="range" min="-100" max="100" />
+	<br/>
+	<input id="slider3" type="range" min="-100" max="100" />
+	<br/>
+	<input id="slider4" type="range" min="-100" max="100" />
+<script id="jsbin-javascript">
+function setup() { "use strict";
+  var canvas = document.getElementById('myCanvas');
+  var slider1 = document.getElementById('slider1');
+  slider1.value = 0;
+  var slider2 = document.getElementById('slider2');
+  slider2.value = 45;
+  var slider3 = document.getElementById('slider3');
+  slider3.value = 35;
+  var slider4 = document.getElementById('slider4');
+  slider4.value = 25;
+                  
+   
+                  
+  function draw() {
+    var context = canvas.getContext('2d');
+    canvas.width = canvas.width;
+    
+    var t1 = slider1.value*0.015*Math.PI;
+    var p1 = slider2.value*0.01*Math.PI;
+    var p2 = slider3.value*0.15*Math.PI;
+    var t2 = slider4.value*0.015*Math.PI;
+    
+    
+   
+    function linkage(color) {
+      
+      context.beginPath();
+      context.fillStyle = color;
+      context.moveTo(108,0);
+      context.lineTo(141,70);
+      context.lineTo(218,78);
+      context.lineTo(162,131);
+      context.lineTo(175,205);
+      context.lineTo(108,170);
+      context.lineTo(41,205);
+      context.lineTo(55,131);
+      context.lineTo(1,78);
+      context.lineTo(75,68);
+      context.lineTo(108,0);
+      context.closePath();
+      context.fill();
+      
+      colo(color);
+      for(var j = 0; j < 20; j++){
+    if(j % 5 !== 0){
+      context.beginPath();
+      context.moveTo(270, 10);
+      context.lineTo(300, 30);
+      
+      context.stroke();
+    }
+    context.rotate(Math.PI/30);
+  }
+    }
+    
+    function colo(color) {    
+      context.stroke();
+     }
+    
+    
+
+    for(var i = 0; i < 12; i++){
+    context.translate(95,15);
+    context.save();
+    context.rotate(t2);
+    context.scale(1.25,1.25);
+    linkage("orange");
+    context.translate(45,15);
+    context.scale(0.85,0.65);
+    context.rotate(t1);
+    context.save();
+    //context.rotate(theta2);
+    linkage("yellow");
+    context.translate(25,5);
+    context.scale(0.75,0.75);
+    context.save();
+    context.rotate(t1);
+    context.translate(25,15);
+    context.scale(0.55,0.35);
+    linkage("pink");
+    context.restore();
+    context.save();
+    context.rotate(p2);
+    context.translate(25,35);
+    context.scale(0.45,0.15);
+    linkage("green");
+    context.restore();
+    context.restore();
+    context.save();
+    context.rotate(p1);
+    context.translate(0,-50);
+    context.scale(.85,-0.75);
+    linkage("purple");
+    context.restore();  
+    context.restore(); 
+  }
+    
+    
+    
+  }
+  slider1.addEventListener("input",draw);
+  slider2.addEventListener("input",draw);
+  slider3.addEventListener("input",draw);
+  slider4.addEventListener("input",draw);
+  draw();
+}
+window.onload = setup;
+
+
+</script>
+</body>
+<head>
+  <meta name="description" content="E3b - Working Slider - Better Code">
+  <meta charset="utf-8">
+  <title>Slider Example Better Code</title>
+</head>
+</html>

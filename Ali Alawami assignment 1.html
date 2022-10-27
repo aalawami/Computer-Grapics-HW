@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2022 by anonymous (http://jsbin.com/viviwuvome/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+	<br/>
+	<input id="slider1" type="range" min="-100" max="100" />
+	<br/>
+	<input id="slider2" type="range" min="-100" max="100" />
+    
+<script id="jsbin-javascript">
+function setup() { "use strict";
+  var canvas = document.getElementById('myCanvas');
+  var slider1 = document.getElementById('slider1');
+  slider1.value = 50;
+  var slider2 = document.getElementById('slider2');
+  
+  slider2.value = 50;
+  //var slider3 = document.getElementById('slider3');
+  var x = 150;
+  var y = 150;
+  //slider3.value = 75;
+  var radius = 75;
+  var startAngle = 0.8 * Math.PI;
+  var endAngle = 2.2 * Math.PI;
+  var counterClockwise = true;
+                  
+                  
+  function draw() {
+    var context = canvas.getContext('2d');
+    canvas.width = canvas.width;
+    // use the sliders to get various parameters
+    
+    
+    
+    
+    
+    var dx = slider1.value;
+    var dy = slider2.value;
+    //var dSmile = slider3.value;
+    
+    function DrawFace(color) {
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+    
+    
+    //circle eye 1
+    context.beginPath();
+    context.arc(100, 75, 50, 0, 2 * Math.PI);
+    context.stroke();
+    //context.fill();
+      
+    context.beginPath();
+    context.arc(100, 75, 15, 0, 2 * Math.PI);
+    context.stroke();
+    context.fill();
+    
+    //circle eye 2
+    context.beginPath();
+    context.arc(200, 75, 50, 0, 2 * Math.PI);
+    context.stroke();
+    //context.fill();
+      
+    context.beginPath();
+    context.arc(200, 75, 15, 0, 2 * Math.PI);
+    context.stroke();
+    context.fill();
+
+      
+      
+    context.beginPath();
+    context.rect(50,10,90,15);
+    context.fillStyle = "#400";
+    context.fill();
+      
+    context.beginPath();
+    context.rect(155,10,90,15);
+    context.fillStyle = "#400";
+    context.fill();
+
+    
+    
+    
+    //nose 
+    context.beginPath();
+    context.moveTo(150,105);
+    context.lineTo(120,170);
+    context.lineTo(180,170);
+    context.closePath();
+    context.strokeStyle = "#190";
+    context.lineWidth = 4;
+    context.stroke();
+    context.fillStyle="#721";
+    context.fill();
+    context.stroke();
+    
+      
+    //var x = 150;
+    //var y = 150;
+    //var radius = 75;
+    //var startAngle = 0.8 * Math.PI;
+    //var endAngle = 2.2 * Math.PI;
+    //var counterClockwise = true;
+    context.beginPath();
+    context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+    context.lineWidth = 10;
+    // line color
+    context.strokeStyle = 'green';
+    context.stroke();  
+      
+      
+    }
+    
+    // make sure you understand these
+    
+    new DrawFace("Blue");
+    context.save();
+    context.translate(dx,dy);
+    context.beginPath();
+    context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+    context.lineWidth = 10;
+    // line color
+    context.strokeStyle = 'green';
+    context.stroke();
+    new DrawFace("green");
+    context.restore();
+    
+  }
+  slider1.addEventListener("input",draw);
+  slider2.addEventListener("input",draw);
+  //slider3.addEventListener("input",draw);
+  draw();
+}
+window.onload = setup;
+</script>
+</body>
+<head>
+  <meta name="description" content="E3b - Working Slider - Better Code">
+  <meta charset="utf-8">
+  <title>Ali Alawami assignment 1</title>
+</head>
+</html>
